@@ -34,8 +34,7 @@ export const GET = async (req: Request) => {
     const payload: ActionGetResponse = {
       title: DEFAULT_TITLE,
       icon:
-        DEFAULT_AVATAR ??
-        new URL("/cute_pic.jpeg", requestUrl.origin).toString(),
+        DEFAULT_AVATAR ?? new URL("/image.png", requestUrl.origin).toString(),
       description: DEFAULT_DESCRIPTION,
       label: "Transfer", // this value will be ignored since `links.actions` exists
       links: {
@@ -67,9 +66,6 @@ export const GET = async (req: Request) => {
       },
     };
 
-    // the way action & blink works, there must be a lots of ppl that are interacting and make request from the client, u gonna make sure
-    // your http enpoint for your get post and your options all support the correct headers, in action sdk there is a actions_core_header
-    // these are kind of standard header that will work out of the box to make it. so you can accept those those request to your server
     return Response.json(payload, {
       headers: ACTIONS_CORS_HEADERS,
     });
