@@ -67,6 +67,9 @@ export const GET = async (req: Request) => {
       },
     };
 
+    // the way action & blink works, there must be a lots of ppl that are interacting and make request from the client, u gonna make sure
+    // your http enpoint for your get post and your options all support the correct headers, in action sdk there is a actions_core_header
+    // these are kind of standard header that will work out of the box to make it. so you can accept those those request to your server
     return Response.json(payload, {
       headers: ACTIONS_CORS_HEADERS,
     });
